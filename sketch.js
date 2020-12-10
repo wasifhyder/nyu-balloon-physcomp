@@ -47,6 +47,8 @@ function draw() {
         ellipse(10, 50, activeEnergyBurnedGoal[counter])
         counter++
 
+        debugger;
+        
         serialHelper.serial.write("1200,600,200")
         alert('I am sending data')
     }

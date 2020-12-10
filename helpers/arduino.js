@@ -2,9 +2,13 @@ class SerialHelper {
     constructor(opts = {}) {
         this.opts = opts;
         this.pollInterval = opts.pollInterval || 300;
+        
+        // Create the serial helper object
+        this.serial = new p5.SerialPort();
+
         // Requires portName
         // - Otherwise don't create the object
-        if (!opts.portName) {
+        if (opts.portName !== undefined) {
             console.log("INFO: No portname provided.")
 
             // List serial ports & return
@@ -22,8 +26,6 @@ class SerialHelper {
         const portName = opts.portName
         const baudRate = opts.baudRate || 9600;
 
-        // Create the serial helper object
-        this.serial = new p5.SerialPort();
 
         // Attach functions for
         this.serial.on('connected', this.onConnected.bind(this));
